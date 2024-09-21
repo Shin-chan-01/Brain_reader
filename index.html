@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .d1{
+        background-color: black;
+        padding: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 10px;
+        height: 50px;
+        display: flex;
+    }
+    .t1{
+        margin-top: 8px;
+        text-decoration: underline;
+    }
+    .in1{
+        height: 30px;
+        width: 30%;
+        margin-left: 35%;
+        border-radius: 10px;
+        margin-top: 30px;
+        border-color: darkred;
+        display: block;
+    }
+    .btn1{
+        height: 30px;
+        width: 15%;
+        margin-left: 42.5%;
+        background-color: darkred;
+        color: white;
+        border-radius: 10px;
+        border-color:orangered;
+        cursor: pointer;
+        display: block;
+        margin-top: 30px;
+        font-weight: bold;
+        font-size: 15px;
+        transition: background-color 0.3s ease;
+    }
+    .btn1:hover {
+        background-color: orangered; 
+        transform: scale(1.05); 
+    }
+    .t2{
+        font-size: 3rem;
+        animation: t2 5s ease backwards;
+        text-align: center;
+        margin-top: 25px;
+    }
+    @keyframes t2 {
+            0% {
+                transform: scale(1);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    .t3{
+        font-size: 3rem;
+        animation: t3 10s ease backwards;
+        text-align: center;
+        margin-top: 25px;
+    }
+    @keyframes t3 {
+            0% {
+                transform: scale(1);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .w1{
+            font-size: 3rem;
+            animation: w1 0s ease backwards;
+            text-align: center;
+            margin-top: 10px;
+            margin-left: 150px;
+            }
+            @keyframes w1 {
+                0% {
+                    transform: scale(1);
+                    opacity: 0;
+                }
+                50% {
+                    transform: scale(1.5);
+                    opacity: 0;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+    .t4{
+        font-size: 3rem;
+        animation: t4 15s ease backwards;
+        text-align: center;
+        margin-top: 10px;
+        margin-left: 120px;
+    }
+   
+    @keyframes t4 {
+            0% {
+                transform: scale(1);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+       
+    .t5{
+            animation: blink 0.3s step-start infinite;
+            font-family: Arial, Helvetica, sans-serif;
+            color: red;
+            font-weight: 100px;
+            font-size: 20px;
+            text-shadow: black;
+            margin-top: 140px;
+            margin-left: 80%;
+        }
+
+    @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        .t6{
+            margin-top: 20px;
+            text-align: center;
+        }
+    .d2{
+        height: 70px;
+        display: flex;
+        text-align: center;
+        width: 40%;
+        margin-left: 30%;
+        color: palevioletred;
+        background-color:white;
+        margin-top: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIND READING</title>
+</head>
+<body>
+    <div class="d1">
+    <h1 class="t1">BRAIN READER</h1>
+    
+    </div>
+    <h1 class="t6">LETS TALK WITH ME</h1>
+    <input class=" in1" type="text" id="in" placeholder="  Enter something to read your mind..." >
+    <button class="btn1" onclick="disp()">BEGIN TO READ</button>
+    <p class="t2" id="p"></p>
+    <p class="t3" id="n"></p>
+    <div class="d2">
+        <p class="w1" id="wait">WAITING...</p>
+    <p class="t4" id="out"></p>
+    </div>
+    <p id="timer" class="t5"></p>
+</body>
+<script>
+    let countdown;
+    function disp() {
+            document.getElementById("p").innerText = "I had read your brain";
+            document.getElementById("n").innerText = "Your thinking is about"
+            const inputValue = document.getElementById("in").value;
+            document.getElementById("out").innerText = inputValue;
+            const timerElement = document.getElementById('timer');
+            let timeLeft = 10;
+            const countdown = setInterval(() => {
+                if (timeLeft > 6) {
+                    timeLeft--;
+                } else {
+                    if (timeLeft === 6) {
+                        timerElement.style.display = 'block'; 
+                    }
+                    timerElement.textContent = `Deleting your memories: ${timeLeft}`; 
+                    timeLeft--;
+                }
+    
+                
+                if (timeLeft < 0) {
+                    clearInterval(countdown);
+                    setTimeout(() => {
+                        location.reload(); 
+                    }, 2000);
+                }
+            }, 1000);
+
+    }
+    setTimeout(() => {
+        document.getElementById('wait').textContent = ''; 
+    }, 5000);
+</script>
+</html>
